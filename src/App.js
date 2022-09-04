@@ -44,9 +44,45 @@ const Box = (props) => {
     ref.current.rotation.x += 0.01;
     ref.current.rotation.y += 0.01;
   });
+
+  //function
+  const handlePointerDown = (e) => {
+    e.object.active = true;
+    if (window.activeMesh) {
+      scaleDown(window.activeMesh);
+      window.activeMesh.active = false;
+    }
+    window.activeMesh = e.object;
+  };
+
+  const handlePointerEnter = (e) => {
+    e.object.scale.x = 1.5;
+    e.object.scale.y = 1.5;
+    e.object.scale.z = 1.5;
+  };
+
+  const handlePointerLeave = (e) => {
+    if (!e.object.active) {
+      scaleDown(e.object);
+    }
+  };
+
+  const scaleDown = (object) => {
+    object.scale.x = 1;
+    object.scale.y = 1;
+    object.scale.z = 1;
+  };
+
   return (
-    <mesh ref={ref} {...props} castShadow receiveShadow>
-      <sphereBufferGeometry args={[1, 100, 100]} />
+    <mesh
+      ref={ref}
+      {...props}
+      castShadow
+      onPointerDown={handlePointerDown}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+    >
+      <boxBufferGeometry args={[1, 1, 1]} />
       <meshPhysicalMaterial map={texture} />
     </mesh>
   );
@@ -91,11 +127,14 @@ function App() {
         style={{ background: "black" }}
         camera={{ position: [3, 3, 3] }}
       >
-        <fog attach="fog" args={["white", 1, 10]} />
+        {/* <fog attach="fog" args={["white", 1, 10]} /> */}
         <ambientLight intensity={0.2} />
         <Bulb position={[0, 3, 0]} />
         <Orbit />
         <axesHelper args={[5]} />
+        <Suspense fallback={null}>
+          <Box position={[-4, 1, 0]} />
+        </Suspense>
         <Suspense fallback={null}>
           <Box position={[0, 1, 0]} />
         </Suspense>
