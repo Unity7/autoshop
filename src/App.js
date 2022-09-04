@@ -8,7 +8,7 @@ import * as THREE from "three";
 //Hook to give access to an element
 import { Suspense } from "react";
 import { useEffect } from "react";
-
+import { Physics } from "@react-three/cannon";
 import Orbit from "./components/Orbit";
 import Box from "./components/Box";
 import Background from "./components/Background";
@@ -31,18 +31,20 @@ function App() {
         <Bulb position={[0, 3, 0]} />
         <Orbit attach="orbitControls" />
         <axesHelper args={[5]} />
-        <Dragable>
+        <Physics>
+          <Dragable>
+            <Suspense fallback={null}>
+              <Box position={[-4, 1, 0]} />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Box position={[0, 1, 0]} />
+            </Suspense>
+          </Dragable>
           <Suspense fallback={null}>
-            <Box position={[-4, 1, 0]} />
+            <Background />
           </Suspense>
-          <Suspense fallback={null}>
-            <Box position={[0, 1, 0]} />
-          </Suspense>
-        </Dragable>
-        <Suspense fallback={null}>
-          <Background />
-        </Suspense>
-        <Floor position={[0, -0.5, 0]} />
+          <Floor position={[0, -0.5, 0]} />
+        </Physics>
       </Canvas>
     </div>
   );
