@@ -1,20 +1,17 @@
 import { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
+import { useBox } from "@react-three/cannon";
 
 const Box = (props) => {
+  const [ref, api] = useBox(() => ({ mass: 1, ...props }));
   //Using useRef to gain reference to the react-three-fiber element (3D Object)
-  const ref = useRef();
+  // const ref = useRef();
 
   // useLoader used to load the texture
   const texture = useLoader(THREE.TextureLoader, "/wood.jpg");
 
   //useFrame takes a call back that runs on every render
-  useFrame((state) => {
-    //current gives access to the referenced object
-    ref.current.rotation.x += 0.01;
-    ref.current.rotation.y += 0.01;
-  });
 
   //function
   const handlePointerDown = (e) => {
@@ -47,6 +44,7 @@ const Box = (props) => {
   return (
     <mesh
       ref={ref}
+      api={api}
       {...props}
       castShadow
       onPointerDown={handlePointerDown}

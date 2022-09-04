@@ -1,5 +1,6 @@
 import { useThree, useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
+import { useMemo } from "react";
 
 const Background = (props) => {
   const texture = useLoader(THREE.TextureLoader, "/autoshop.jpg");
