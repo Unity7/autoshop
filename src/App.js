@@ -15,7 +15,6 @@ import Floor from "./components/Floor";
 import Bulb from "./components/Bulb";
 import ColorPicker from "./components/ColorPicker";
 import Cars from "./components/Cars";
-import CameraControls from "./components/CameraControls";
 import CamControls from "./components/CamControls";
 import CameraButtons from "./components/CameraButtons";
 import Lights from "./components/Lights";
@@ -41,7 +40,7 @@ function App() {
         {/* <fog attach="fog" args={["white", 1, 10]} /> */}
         <Lights />
         <Orbit attach="orbitControls" />
-        <axesHelper args={[5]} />
+        {/* <axesHelper args={[5]} /> */}
         <Background />
         <Physics>
           <Cars />
