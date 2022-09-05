@@ -9,7 +9,6 @@ const Cars = ({}) => {
       {/* transformGroup enables single draggable group object (each model must be wrapped in <Draggable>*/}
       <Dragable transformGroup>
         <BoundingBox
-          visible
           position={[4, 4, 0]}
           dims={[3, 2, 6]}
           offset={[0, -0.4, 0.8]}
@@ -23,7 +22,6 @@ const Cars = ({}) => {
       </Dragable>
       <Dragable transformGroup>
         <BoundingBox
-          visible
           position={[-4, 4, 0]}
           dims={[3, 2, 6]}
           offset={[0, -0.8, 0.2]}
