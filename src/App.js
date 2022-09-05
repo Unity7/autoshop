@@ -8,7 +8,7 @@ import * as THREE from "three";
 //Hook to give access to an element
 import { Suspense } from "react";
 import { useEffect } from "react";
-
+import { Physics } from "@react-three/cannon";
 import Orbit from "./components/Orbit";
 import Box from "./components/Box";
 import Background from "./components/Background";
@@ -16,6 +16,8 @@ import Floor from "./components/Floor";
 import Bulb from "./components/Bulb";
 import ColorPicker from "./components/ColorPicker";
 import Dragable from "./components/Dragable";
+import Model from "./components/Model";
+import BoundingBox from "./components/BoundingBox";
 
 function App() {
   return (
@@ -28,21 +30,47 @@ function App() {
       >
         {/* <fog attach="fog" args={["white", 1, 10]} /> */}
         <ambientLight intensity={0.2} />
-        <Bulb position={[0, 3, 0]} />
+
         <Orbit attach="orbitControls" />
         <axesHelper args={[5]} />
-        <Dragable>
+        <Bulb position={[0, 3, 0]} />
+        <Physics>
           <Suspense fallback={null}>
-            <Box position={[-4, 1, 0]} />
+            {/* transformGroup enables single draggable group object (each model must be wrapped in <Draggable>*/}
+            <Dragable transformGroup>
+              <BoundingBox
+                visible
+                position={[4, 4, 0]}
+                dims={[3, 2, 6]}
+                offset={[0, -0.4, 0.8]}
+              >
+                <Model
+                  path="/tesla_model_3/scene.gltf"
+                  scale={new Array(3).fill(0.01)}
+                  // position={[4, 2, 0]}
+                />
+              </BoundingBox>
+            </Dragable>
+            <Dragable transformGroup>
+              <BoundingBox
+                visible
+                position={[-4, 4, 0]}
+                dims={[3, 2, 6]}
+                offset={[0, -0.8, 0.2]}
+              >
+                <Model
+                  path="/tesla_model_s/scene.gltf"
+                  scale={new Array(3).fill(0.012)}
+                  // position={[-4, 2, 0]}
+                />
+              </BoundingBox>
+            </Dragable>
           </Suspense>
           <Suspense fallback={null}>
-            <Box position={[0, 1, 0]} />
+            <Background />
           </Suspense>
-        </Dragable>
-        <Suspense fallback={null}>
-          <Background />
-        </Suspense>
-        <Floor position={[0, -0.5, 0]} />
+          <Floor position={[0, -0.5, 0]} />
+        </Physics>
       </Canvas>
     </div>
   );
