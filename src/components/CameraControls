@@ -1,0 +1,15 @@
+import { useFrame } from "@react-three/fiber";
+import state2 from "../state";
+import * as THREE from "three";
+
+const CameraControls = ({}) => {
+  // const vec = new THREE.Vector3();
+  // useFrame(({ camera, scene }) => {
+  //   //takes 1 vector target you want to interpolated towards and how far along new vector you want to interpolate. 2nd vector the alpha between 0 and 1.
+  //   camera.position.lerp(vec.set(...state.cameraPos), 0.1);
+  //   scene.orbitControls.update();
+  // });
+  return null;
+};
+
+export default CameraControls;
