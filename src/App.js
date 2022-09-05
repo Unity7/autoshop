@@ -19,6 +19,13 @@ import CameraControls from "./components/CameraControls";
 import CamControls from "./components/CamControls";
 import CameraButtons from "./components/CameraButtons";
 import Lights from "./components/Lights";
+import Effects from "./components/Effects";
+import {
+  EffectComposer,
+  DepthOfField,
+  Bloom,
+  GodRays,
+} from "@react-three/postprocessing";
 
 function App() {
   return (
@@ -41,6 +48,14 @@ function App() {
           <Suspense fallback={null}></Suspense>
           <Floor position={[0, -0.5, 0]} />
         </Physics>
+        <EffectComposer>
+          <DepthOfField
+            focusDistance={0}
+            focalLength={0.02}
+            bokehScale={2}
+            height={480}
+          />
+        </EffectComposer>
       </Canvas>
     </div>
   );

@@ -2,7 +2,7 @@ import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as THREE from "three";
 const Model = (props) => {
-  const model = useLoader(GLTFLoader, props.path);
+  const model = useLoader(GLTFLoader, process.env.PUBLIC_URL + props.path);
   //go through all child model elements with traverse
   model.scene.traverse((child) => {
     if (child.isMesh) {

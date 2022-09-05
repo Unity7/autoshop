@@ -9,7 +9,10 @@ const Box = (props) => {
   // const ref = useRef();
 
   // useLoader used to load the texture
-  const texture = useLoader(THREE.TextureLoader, "/wood.jpg");
+  const texture = useLoader(
+    THREE.TextureLoader,
+    process.env.PUBLIC_URL + "/wood.jpg"
+  );
 
   //useFrame takes a call back that runs on every render
 
