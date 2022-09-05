@@ -1,16 +1,15 @@
 {
   "files": {
     "main.css": "/autoshop/static/css/main.073c9b0a.css",
-    "main.js": "/autoshop/static/js/main.91059811.js",
+    "main.js": "/autoshop/static/js/main.93327899.js",
     "static/js/787.c302c6a6.chunk.js": "/autoshop/static/js/787.c302c6a6.chunk.js",
-    "static/media/CameraControls": "/autoshop/static/media/CameraControls.2f5314ceadeadceb4849",
     "index.html": "/autoshop/index.html",
     "main.073c9b0a.css.map": "/autoshop/static/css/main.073c9b0a.css.map",
-    "main.91059811.js.map": "/autoshop/static/js/main.91059811.js.map",
+    "main.93327899.js.map": "/autoshop/static/js/main.93327899.js.map",
     "787.c302c6a6.chunk.js.map": "/autoshop/static/js/787.c302c6a6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.91059811.js"
+    "static/js/main.93327899.js"
   ]
 }
