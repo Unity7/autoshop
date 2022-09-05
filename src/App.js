@@ -32,22 +32,25 @@ function App() {
 
         <Orbit attach="orbitControls" />
         <axesHelper args={[5]} />
+        <Bulb position={[0, 3, 0]} />
         <Physics>
-          <Dragable>
-            <Bulb position={[0, 3, 0]} />
-            <Suspense>
+          <Suspense fallback={null}>
+            {/* transformGroup enables single draggable group object (each model must be wrapped in <Draggable>*/}
+            <Dragable transformGroup>
               <Model
                 path="/tesla_model_3/scene.gltf"
                 scale={new Array(3).fill(0.01)}
                 position={[4, 0.6, 0]}
               />
+            </Dragable>
+            <Dragable transformGroup>
               <Model
                 path="/tesla_model_s/scene.gltf"
                 scale={new Array(3).fill(0.012)}
                 position={[-4, 0.6, 0]}
               />
-            </Suspense>
-          </Dragable>
+            </Dragable>
+          </Suspense>
           <Suspense fallback={null}>
             <Background />
           </Suspense>

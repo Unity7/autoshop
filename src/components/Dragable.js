@@ -23,22 +23,23 @@ const Dragable = (props) => {
     });
 
     controlsRef.current.addEventListener("dragstart", (e) => {
-      e.object.api.mass.set(0);
+      e.object.api?.mass.set(0);
     });
 
     controlsRef.current.addEventListener("dragend", (e) => {
-      e.object.api.mass.set(1);
+      e.object.api?.mass.set(1);
     });
 
     controlsRef.current.addEventListener("drag", (e) => {
-      e.object.api.position.copy(e.object.position);
-      e.object.api.velocity.set(0, 0, 0);
+      e.object.api?.position.copy(e.object.position);
+      e.object.api?.velocity.set(0, 0, 0);
     });
   }, [children]);
 
   return (
     <group ref={groupRef}>
       <dragControls
+        transformGroup={props.transformGroup}
         ref={controlsRef}
         args={[children, camera, gl.domElement]}
       />
