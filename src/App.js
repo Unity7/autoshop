@@ -18,6 +18,7 @@ import Cars from "./components/Cars";
 import CameraControls from "./components/CameraControls";
 import CamControls from "./components/CamControls";
 import CameraButtons from "./components/CameraButtons";
+import Lights from "./components/Lights";
 
 function App() {
   return (
@@ -29,23 +30,11 @@ function App() {
         style={{ background: "black" }}
         camera={{ position: [7, 7, 7] }}
       >
-        {/* <CameraControls /> */}
         <CamControls />
         {/* <fog attach="fog" args={["white", 1, 10]} /> */}
-        <ambientLight intensity={0.2} />
-        <directionalLight
-          intensity={2}
-          castShadow
-          position={[6, 3, 0]}
-          shadow-mapSize-height={2 ** 10}
-          shadow-mapSize-width={2 ** 10}
-          shadow-radius={10}
-        />
+        <Lights />
         <Orbit attach="orbitControls" />
         <axesHelper args={[5]} />
-        <Bulb position={[-6, 3, 0]} />
-        <Bulb position={[0, 3, 0]} />
-        <Bulb position={[6, 3, 0]} />
         <Background />
         <Physics>
           <Cars />
